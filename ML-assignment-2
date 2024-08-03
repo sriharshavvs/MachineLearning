@@ -70,6 +70,12 @@ print(f"Probability of Making a Profit on Wednesday: {prob_wed_prof:.2f}")
 prof_if_wed = prob_wed_prof
 print(f"Profit if wednesday: {prof_if_wed}")
 
-
-
-#A5
+buying_data['Day of Week'] = buying_data['Date'].dt.day_name()
+plt.figure(figsize=(10, 6))
+plt.scatter(buying_data['Day of Week'], buying_data['Chg%'])
+plt.title('Scatter Plot of chg Against Day of the Week')
+plt.xlabel('Day of the Week')
+plt.ylabel('Chg%')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.show()
