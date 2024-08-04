@@ -14,10 +14,10 @@ matX = A_pseudo_inv @ matC
 print("Dimensionality = : ",dim)
 print("No of vectors = ",n_vec)
 print("Rank of matA: ",rank)
-print("Cost of products: :")
-print(" - Candies: Rs: {:.2f}".format(matX[0]))
-print(" - Mangoes: Rs: {:.2f}".format(matX[1]))
-print(" - Milk Packets: Rs: {:.2f}".format(matX[2]))
+print("Cost of products:")
+print("Candies {:.2f}".format(matX[0]))
+print("Mangoes-Rs: {:.2f}".format(matX[1]))
+print("Milk Packets-Rs: {:.2f}".format(matX[2]))
 
 
 
@@ -73,8 +73,8 @@ print(f"Profit if wednesday: {prof_if_wed}")
 buying_data['Day of Week'] = buying_data['Date'].dt.day_name()
 plt.figure(figsize=(10, 6))
 plt.scatter(buying_data['Day of Week'], buying_data['Chg%'])
-plt.title('Scatter Plot of chg Against Day of the Week')
-plt.xlabel('Day of the Week')
+plt.title('Plot')
+plt.xlabel('Day')
 plt.ylabel('Chg%')
 plt.xticks(rotation=45)
 plt.grid(True)
@@ -87,7 +87,11 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from sklearn.metrics import pairwise_distances
+from sklearn.preprocessing import LabelEncoder
+from scipy.spatial.distance import cosine
+
 
 file_path = r"C:\Users\vvmad\Downloads\5th\ML\Lab Session Data.xlsx"
 thyroid_data = pd.read_excel(file_path, sheet_name = 'thyroid0387_UCI')
