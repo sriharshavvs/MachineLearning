@@ -175,7 +175,6 @@ print("SMC is: {:.4f}".format(SMC))
 
 
 #A9
-
 num_data = thyroid_data.select_dtypes(include=[np.number])
 vec1_full = thyroid_data.loc[0].values
 vec2_full = thyroid_data.loc[1].values
@@ -195,7 +194,6 @@ else:
 
 
 #A10
-
 data_set = thyroid_data.iloc[:20]
 
 for c in data_set.columns:
