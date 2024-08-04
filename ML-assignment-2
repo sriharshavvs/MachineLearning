@@ -71,7 +71,7 @@ prof_if_wed = prob_wed_prof
 print(f"Profit if wednesday: {prof_if_wed}")
 
 buying_data['Day of Week'] = buying_data['Date'].dt.day_name()
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(3,3))
 plt.scatter(buying_data['Day of Week'], buying_data['Chg%'])
 plt.title('Plot')
 plt.xlabel('Day')
@@ -111,7 +111,7 @@ missing_values = thyroid_data.isnull().sum()
 print(missing_values)
 
 numeric_columns = thyroid_data.select_dtypes(include=['float64','int64']).columns
-plt.figure(figsize=(10,8))
+plt.figure(figsize=(4,4))
 sns.boxplot(data=thyroid_data[numeric_columns])
 plt.title('Boxplot:')
 plt.show()
@@ -160,8 +160,9 @@ print(thyroid_data_standardized.head())
 
 
 #A8
-thyroid_data_withoutnan = thyroid_data[binary_cols].dropna()
 binary_cols = ['FTI', 'T3', 'TSH']
+thyroid_data_withoutnan = thyroid_data[binary_cols].dropna()
+
 vec1 = thyroid_data_withoutnan.iloc[0].values
 vec2 = thyroid_data_withoutnan.iloc[1].values
 
@@ -183,7 +184,7 @@ num_data = thyroid_data.select_dtypes(include=[np.number])
 vec1_full = thyroid_data.loc[0].values
 vec2_full = thyroid_data.loc[1].values
 
-if len(numeric_data) >= 2:
+if len(num_data) >= 2:
     vec1_full = num_data.iloc[0].values
     vec2_full = num_data.iloc[1].values
 
@@ -211,17 +212,17 @@ jc_sim = 1-pairwise_distances(data_set2, metric = 'jaccard')
 smc_sim = 1-pairwise_distances(data_set2, metric=lambda u, v: np.sum(u==v) / len(u))
 cosine_sim = 1-pairwise_distances(data_set2, metric = 'cosine')
 
-plt.figure(figsize=(10,8))
-sns.heatmap(jc_sim, annot = True, cmap='coolwarm')
-plt.title('Jaccard Similarity Heatmap')
+plt.figure(figsize=(8,4))
+sns.heatmap(jc_sim, annot = True, cmap='YlGn') #Green
+plt.title('Jaccard Similarity:')
 plt.show()
 
-plt.figure(figsize=(10,8))
-sns.heatmap(smc_sim, annot = True, cmap='coolwarm')
-plt.title('Simple Matching Similarity Heatmap')
+plt.figure(figsize=(8,4))
+sns.heatmap(smc_sim, annot = True, cmap='YlGnBu') #Blue and Green
+plt.title('Simple Matching Similarity:')
 plt.show()
 
-plt.figure(figsize=(10,8))
-sns.heatmap(cosine_sim, annot = True, cmap='coolwarm')
-plt.title('Cosine Similarity Heatmap')
+plt.figure(figsize=(8,4))
+sns.heatmap(cosine_sim, annot = True, cmap='YlOrRd') #Orange and Red
+plt.title('Cosine Similarity:')
 plt.show()
